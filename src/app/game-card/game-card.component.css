@@ -1,0 +1,29 @@
+.game-card {
+    background-color: #ffffff;
+    width: 300px;
+    border: solid blueviolet;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.thumbnail {
+    width: 200px;
+    height: 150px;
+}
+
+.game-title {
+    font-weight: 600;
+    color: blueviolet;
+}
+
+.play-button {
+    width: 80%;
+    border: transparent;
+    border-radius: 5px;
+    background-color: greenyellow;
+    padding: 5px 0 5px 0;
+}

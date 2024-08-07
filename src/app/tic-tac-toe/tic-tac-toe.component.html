@@ -1,0 +1,47 @@
+<section>
+    <div>
+        <div class="row">
+            <div class="col">
+                <h2 id="player1Name">Player 1 - <span id="player1Symbol">X</span></h2>
+                <h2 id="player1Symbol">X</h2>
+            </div>
+            <div class="col">
+                <h2 id="player2Name">PC - <span id="player2Symbol">O</span></h2>
+                <h2 id="player2Symbol">O</h2>
+            </div>
+        </div>
+    </div>
+    <div class="test">
+        <div class="settings">
+            <button id="singlePlayerBtn" class="active" (click)="singlePlayerSelected()">Single Player</button>
+            <button id="twoPlayerBtn" (click)="twoPlayerSelected()">Two Player</button>
+            <button (click)="startClicked()">Start</button>
+            <button (click)="reset()">Reset</button>
+            <button (click)="switchClicked()">Switch Sides</button>
+            <input id="player1NameField" placeholder="Insert name of Player 1" (input)="player1NameChanged($event)">
+            <input *ngIf="isVisible" id="player2NameField" placeholder="Insert name of Player 2"
+                (input)="player2NameChanged($event)">
+        </div>
+        <div class="board">
+            <div class="row">
+                <div id="0" class="cell"></div>
+                <div id="1" class="cell"></div>
+                <div id="2" class="cell"></div>
+            </div>
+            <div class="row">
+                <div id="3" class="cell"></div>
+                <div id="4" class="cell"></div>
+                <div id="5" class="cell"></div>
+            </div>
+            <div class="row">
+                <div id="6" class="cell"></div>
+                <div id="7" class="cell"></div>
+                <div id="8" class="cell"></div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="status">
+        <p id="status"></p>
+    </div>
+</section>

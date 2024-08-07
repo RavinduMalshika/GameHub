@@ -40,7 +40,10 @@
                 <input type="password" placeholder="Password">
                 <a href="#">Forget Your Password?</a>
                 <button>Sign In</button>
+                <hr class="seperator" />
+                <button class="active" [routerLink]="homePath">Play as Guest</button>
             </form>
+
         </div>
         <div class="toggle-container">
             <div class="toggle-panel" [@togglePanel]="isSignIn ? 'signIn' : 'signUp'">
@@ -56,5 +59,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="instruction">
+        <p>This is a front-end only website, so <b>Sign in</b> and <b>Sign up</b> are for demonstration purposes. Click <a role="button" [routerLink]="homePath"><b>Play as Guest</b></a>
+            to proceed. </p>
     </div>
 </section>

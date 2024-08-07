@@ -298,6 +298,7 @@
     height: 100%;
     overflow: hidden;
     z-index: 1000;
+    pointer-events: none;
 }
 
 .toggle-panel{
@@ -316,6 +317,7 @@
     border-radius: 100px 150px 100px 150px;
     background-color: #512da8;
     background: linear-gradient(to right, #5c6bc0, #512da8);
+    pointer-events: all;
 }
 
 /* .toggle-right{
@@ -345,4 +347,21 @@
     position: absolute;
     width: 50%;
     left: 0;
+    margin: 0px 10px;
+}
+
+.seperator{
+    width: 100%;
+    height: 5px;
+    color: black;
+}
+
+.instruction{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.instruction a{
+    text-decoration: none;
+    color: #512da8;
 }

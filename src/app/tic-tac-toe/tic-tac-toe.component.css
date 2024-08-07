@@ -1,0 +1,56 @@
+.test {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 50px;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.board {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: chartreuse;
+    border-radius: 10px;
+}
+
+.cell {
+    display: flex;
+    background-color: gray;
+    border: solid black;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: 800;
+}
+
+button {
+    background-color: aliceblue;
+}
+
+.active {
+    background-color: red;
+    pointer-events: none;
+}
+
+table, th, td {
+    border: 1px  solid black;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    width: 33%;
+}
+
+.scoreRow {
+    border: 2px solid black;
+}
