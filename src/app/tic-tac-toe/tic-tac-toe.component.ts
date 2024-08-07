@@ -84,7 +84,7 @@ export class TicTacToeComponent {
     if (switchOrder) {
       switchOrder = false;
       player1Symbol = "X";
-      player2Symbol = "0";
+      player2Symbol = "O";
       document.getElementById("player1Symbol")!.innerHTML = "X";
       document.getElementById("player2Symbol")!.innerHTML = "O";
       player = 1;
@@ -108,7 +108,7 @@ export class TicTacToeComponent {
 var player = 1;
 var switchOrder = false;
 var player1Symbol = "X";
-var player2Symbol = "0";
+var player2Symbol = "O";
 var start = false;
 var mode = "singlePlayer";
 var availableInputs = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
