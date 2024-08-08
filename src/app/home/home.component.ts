@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { GameCardComponent } from '../game-card/game-card.component';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
