@@ -10,9 +10,9 @@ import { GameCardComponent } from '../game-card/game-card.component';
 })
 export class HomeComponent {
   ticTacToe = "Tic Tac Toe";
-  ticTacToeThumbnail = "../../assets/TicTacToe.jpeg";
+  ticTacToeThumbnail = "assets/TicTacToe.jpeg";
   ticTacToePath = "/tic-tac-toe";
   chess = "Chess";
-  chessThumbnail = "../../assets/Chess.jpeg";
+  chessThumbnail = "assets/Chess.jpeg";
   chessPath = "/chess";
 }

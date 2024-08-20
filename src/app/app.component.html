@@ -1,6 +1,9 @@
 <main>
   <header>
-    <h1 class="bi bi-joystick"> Game Hub</h1>
+    <div class="top-bar">
+      <h1 class="bi bi-joystick"> Game Hub</h1>
+      <input class="theme-selector-light" id="themeSelector" type="range" min="0" max="1" value="0" (input)="themeChanged($event)" />
+    </div> 
   </header>
   <section>
     <router-outlet></router-outlet>

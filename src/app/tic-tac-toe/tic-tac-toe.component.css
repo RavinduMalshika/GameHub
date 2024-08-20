@@ -1,56 +1,260 @@
-.test {
+.body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 50px;
+    margin-top: 50px;
 }
 
 .settings {
     display: flex;
     flex-direction: column;
-    margin-right: 20px;
+    width: auto;
+    padding-left: 10px;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
 }
 
 .board {
-    display: inline-block;
-    padding: 15px 25px;
-    background-color: chartreuse;
-    border-radius: 10px;
+    width: 80%;
+    border: none;
+}
+
+.row {
+    padding-left: auto;
+    padding-right: auto;
+    margin: 0;
+    justify-content: center;
 }
 
 .cell {
     display: flex;
-    background-color: gray;
-    border: solid black;
-    width: 100px;
-    height: 100px;
+    background-color: transparent;
+    /* height: 25vh; */
+    width: 25%;
+    max-width: 200px;
+    aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
     font-size: 80px;
     font-weight: 800;
 }
 
-button {
-    background-color: aliceblue;
+.cell-top-left {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
-.active {
-    background-color: red;
-    pointer-events: none;
+.cell-top-center {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
-table, th, td {
-    border: 1px  solid black;
+.cell-top-right {
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
-table {
-    width: 100%;
+.cell-mid-left {
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
-td {
-    width: 33%;
-}
-
-.scoreRow {
+.cell-mid-center {
     border: 2px solid black;
+}
+
+.cell-mid-right {
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.cell-bottom-left {
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+}
+
+.cell-bottom-center {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+}
+
+.cell-bottom-right {
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+}
+
+button {
+    background-color: var(--primary-color);
+    width: 150px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 10px auto;
+    box-shadow: 0px 5px 5px var(--shadow-color);
+    border: none;
+}
+
+button:active {
+    box-shadow: 0px 3px 2px var(--shadow-color);
+    transform: translateY(2px);
+}
+
+.btn-img {
+    width: 80px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-field {
+    background-color: #eee;
+    border: none;
+    margin: 10px 0;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    text-align: center;
+}
+
+.status {
+    margin-top: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .cell {
+        width: 10rem;
+        /* max-width: 200px; */
+        aspect-ratio: 1/1;
+        justify-content: center;
+        align-items: center;
+        font-size: 80px;
+        font-weight: 800;
+    }
+
+    button {
+        margin: 20px auto;
+        width: 120px;
+        height: 80px;
+    }
+
+    .btn-img {
+        width: 60px;
+    }
+}
+
+@media (max-width: 425px) {
+    .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .settings {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        padding: 0 10px;
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+    }
+
+    .board {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .cell {
+        width: 25vw;
+        height: 25vw;
+        justify-content: center;
+        align-items: center;
+        font-size: 80px;
+        font-weight: 800;
+    }
+
+    button {
+        margin: 20px 10px;
+        width: 100px;
+        height: 75px;
+    }
+
+    .btn-img {
+        width: 50px;
+    }
+
+    .name-field {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 320px) {
+    .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .settings {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        padding: 0 10px;
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+    }
+
+    .board {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .cell {
+        width: 25vw;
+        height: 25vw;
+        justify-content: center;
+        align-items: center;
+        font-size: 80px;
+        font-weight: 800;
+    }
+
+    button {
+        margin: 20px 5px;
+        width: 75px;
+        height: 75px;
+    }
+
+    .btn-img {
+        width: 30px;
+    }
+
+    .name-field {
+        margin-bottom: 5px;
+    }
 }

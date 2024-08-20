@@ -1,3 +1,7 @@
+:root {
+    --theme-selector-icon: "../assets/light-mode.svg";
+}
+
 header {
     padding: 2px 5px 2px 5px;
     display: block;
@@ -7,4 +11,79 @@ header {
 
 h1 {
     margin: 0;
+}
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.theme-selector-light {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: auto 10px auto auto;
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    border-radius: 15px;
+    outline: none;
+}
+
+.theme-selector-light::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: var(--primary-color);
+    background-image: url("../assets/light-mode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.theme-selector-light::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: var(--primary-color);
+    background-image: url("../assets/light-mode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.theme-selector-dark {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: auto 10px auto auto;
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    border-radius: 15px;
+    outline: none;
+}
+
+.theme-selector-dark::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: var(--primary-color);
+    background-image: url("../assets/dark-mode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.theme-selector-dark::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: var(--primary-color);
+    background-image: url("../assets/dark-mode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
 }

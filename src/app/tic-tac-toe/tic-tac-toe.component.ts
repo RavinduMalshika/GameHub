@@ -21,7 +21,7 @@ export class TicTacToeComponent {
     for (let i = 0; i < cells.length; i++) {
       cells[i].innerHTML = "";
       player = 1;
-      document.getElementById("status")!.innerHTML = "";
+      document.getElementById("status")!.innerHTML = "Click Start to Play";
     }
 
     removeEventListenersToCells();
@@ -54,29 +54,38 @@ export class TicTacToeComponent {
   }
 
   startClicked = () => {
-    start = true;
-    this.addEventListenersToCells();
-    document.getElementById("status")!.innerHTML = switchOrder ? "Player 2's turn" : "Player 1's turn";
+    if (start == false) {
+      start = true;
+      this.addEventListenersToCells();
+      document.getElementById("status")!.innerHTML = switchOrder ? "Player 2's turn" : "Player 1's turn";
+      const startImg = document.getElementById("startImg") as HTMLImageElement;
+      startImg.src = "assets/reset.svg";
+    } else {
+      this.reset();
+      const startImg = document.getElementById("startImg") as HTMLImageElement;
+      startImg.src = "assets/play.svg";
+    }
   }
 
-  singlePlayerSelected = () => {
-    mode = "singlePlayer";
-    this.reset();
-    this.isVisible = false;
-    document.getElementById("player2Name")!.innerHTML = "PC";
+  playerModeSelected = () => {
+    if (mode == "singlePlayer") {
+      mode = "twoPlayer";
+      this.reset();
+      this.isVisible = true;
+      document.getElementById("player2Name")!.innerHTML = "Player 2";
+      //document.getElementById("singlePlayerBtn")!.innerHTML = `<img class="btn-img" src="assets/two-player.svg"  width="80px" alt="Single Player"/>`;
+      const btnImg = document.getElementById("playerModeImg") as HTMLImageElement;
+      btnImg.src = "assets/two-player.svg";
+    } else {
+      mode = "singlePlayer";
+      this.reset();
+      this.isVisible = false;
+      document.getElementById("player2Name")!.innerHTML = "PC";
+      //document.getElementById("singlePlayerBtn")!.innerHTML = `<img class="btn-img" src="assets/single-player.svg"  width="100px" alt="Sinle Player"/>`;
+      const btnImg = document.getElementById("playerModeImg") as HTMLImageElement;
+      btnImg.src = "assets/single-player.svg";
+    }
 
-    document.getElementById("singlePlayerBtn")?.classList.add("active");
-    document.getElementById("twoPlayerBtn")?.classList.remove("active");
-  }
-
-  twoPlayerSelected = () => {
-    mode = "twoPlayer";
-    this.reset();
-    this.isVisible = true;
-    document.getElementById("player2Name")!.innerHTML = "Player 2";
-
-    document.getElementById("twoPlayerBtn")?.classList.add("active");
-    document.getElementById("singlePlayerBtn")?.classList.remove("active");
   }
 
   switchClicked = () => {

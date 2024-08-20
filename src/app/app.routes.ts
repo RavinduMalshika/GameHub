@@ -1,8 +1,8 @@
+import { Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HomeComponent } from './home/home.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { ChessComponent } from './chess/chess.component';
-import { Routes } from '@angular/router';
 
 const routes: Routes = [
     {
