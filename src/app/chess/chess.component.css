@@ -1,0 +1,17 @@
+p {
+    text-align: center;
+    font-size: 6rem;
+}
+
+@media (max-width: 768px) {
+    p {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 425px) {
+    p {
+        font-size: 2rem;
+    }
+}
+

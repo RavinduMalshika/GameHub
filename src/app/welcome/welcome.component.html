@@ -45,8 +45,23 @@
             </form>
 
         </div>
-        <div class="toggle-container">
-            <div class="toggle-panel" [@togglePanel]="isSignIn ? 'signIn' : 'signUp'">
+        <div *ngIf="isHorizontal" class="toggle-container">
+            <div class="toggle-panel" [@togglePanelX]="isSignIn ? 'signIn' : 'signUp'">
+                <div class="sign-in-content">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login" (click)="signInToggle()">Sign In</button>
+                </div>
+                <div class="sign-up-content">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" id="register" (click)="signUpToggle()">Sign Up</button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isMobile" class="toggle-container">
+            <div class="toggle-panel" [@togglePanelY]="isSignIn ? 'signIn' : 'signUp'">
                 <div class="sign-in-content">
                     <h1>Welcome Back!</h1>
                     <p>Enter your personal details to use all of site features</p>

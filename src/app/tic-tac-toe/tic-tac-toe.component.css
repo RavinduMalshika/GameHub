@@ -133,8 +133,9 @@ button:active {
 }
 
 .status {
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
+    font-size: 2rem;
 }
 
 @media (max-width: 768px) {

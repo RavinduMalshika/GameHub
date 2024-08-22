@@ -1,4 +1,10 @@
 section {
     display: flex;
-    padding: 100px 50px;    
+    flex-wrap: wrap;    
+}
+
+@media (max-width: 425px) {
+    section {
+        justify-content: center;
+    }
 }

@@ -73,7 +73,6 @@ export class TicTacToeComponent {
       this.reset();
       this.isVisible = true;
       document.getElementById("player2Name")!.innerHTML = "Player 2";
-      //document.getElementById("singlePlayerBtn")!.innerHTML = `<img class="btn-img" src="assets/two-player.svg"  width="80px" alt="Single Player"/>`;
       const btnImg = document.getElementById("playerModeImg") as HTMLImageElement;
       btnImg.src = "assets/two-player.svg";
     } else {
@@ -81,7 +80,6 @@ export class TicTacToeComponent {
       this.reset();
       this.isVisible = false;
       document.getElementById("player2Name")!.innerHTML = "PC";
-      //document.getElementById("singlePlayerBtn")!.innerHTML = `<img class="btn-img" src="assets/single-player.svg"  width="100px" alt="Sinle Player"/>`;
       const btnImg = document.getElementById("playerModeImg") as HTMLImageElement;
       btnImg.src = "assets/single-player.svg";
     }

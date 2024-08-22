@@ -2,10 +2,39 @@
   <header>
     <div class="top-bar">
       <h1 class="bi bi-joystick"> Game Hub</h1>
-      <input class="theme-selector-light" id="themeSelector" type="range" min="0" max="1" value="0" (input)="themeChanged($event)" />
-    </div> 
+      <input class="theme-selector-light" id="themeSelector" type="range" min="0" max="1" value="0"
+        (input)="themeChanged($event)" />
+    </div>
   </header>
   <section>
     <router-outlet></router-outlet>
   </section>
+  <footer>
+    <div class="footer-spacer"></div>
+
+    <div class="footer-content">
+      <div class="information">
+        <div class="about">
+          <p><b>Ravindu Malshika Fernando</b></p>
+          <p>A Full Stack Software Enginner</p>
+        </div>
+
+        <div class="social">
+          <b>Social</b>
+          <div class="social-icons">
+            <i class="bi bi-github" role="button" (click)="openExternalLink('https://github.com/RavinduMalshika/')"></i>
+            <i class="bi bi-linkedin" role="button" (click)="openExternalLink('https://www.linkedin.com/in/ravindumalshika/')"></i>
+            <i class="bi bi-twitter-x" role="button" (click)="openExternalLink('https://x.com/PRM_Fernando')"></i>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <p class="made-by">Made by <a (click)="openExternalLink('https://www.ravindumalshika.com')">Ravindu Malshika</a>
+      </p>
+    </div>
+
+    <div class="footer-spacer"></div>
+  </footer>
 </main>

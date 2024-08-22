@@ -1,13 +1,13 @@
 .game-card {
-    background-color: #ffffff;
-    width: 300px;
-    border: solid blueviolet;
+    background-color: var(--container-color);
+    width: 15rem;
+    border: solid var(--secondary-color);
     border-radius: 10px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
+    margin: 30px;
 }
 
 .thumbnail {
@@ -17,13 +17,19 @@
 
 .game-title {
     font-weight: 600;
-    color: blueviolet;
+    color: var(--text-color);
 }
 
 .play-button {
     width: 80%;
     border: transparent;
     border-radius: 5px;
-    background-color: greenyellow;
+    background-color: var(--primary-color);
     padding: 5px 0 5px 0;
+}
+
+@media (max-width: 425px) {
+    .game-card {
+        margin: 20px 10px;
+    }
 }

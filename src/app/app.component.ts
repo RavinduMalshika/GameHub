@@ -32,4 +32,8 @@ export class AppComponent {
         break;
     }
   }
+
+  openExternalLink(url: string) {
+    window.open(url, '_blank');
+  }
 }
