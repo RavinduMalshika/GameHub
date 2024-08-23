@@ -21,10 +21,12 @@ export class TicTacToeComponent {
     for (let i = 0; i < cells.length; i++) {
       cells[i].innerHTML = "";
       player = 1;
-      document.getElementById("status")!.innerHTML = "Click Start to Play";
     }
 
     removeEventListenersToCells();
+    document.getElementById("status")!.innerHTML = "Click Start to Play";
+    const startImg = document.getElementById("startImg") as HTMLImageElement;
+    startImg.src = "assets/play.svg";
   }
 
   addEventListenersToCells = () => {
@@ -38,18 +40,20 @@ export class TicTacToeComponent {
   player1NameChanged = (event: any) => {
     if (event.target.value != "") {
       document.getElementById("player1Name")!.innerHTML = event.target.value;
+      player1Name = event.target.value;
     } else {
-      console.log("cvc");
       document.getElementById("player1Name")!.innerHTML = "Player 1";
+      player1Name = "Player 1";
     }
   }
 
   player2NameChanged = (event: any) => {
     if (event.target.value != "") {
       document.getElementById("player2Name")!.innerHTML = event.target.value;
+      player2Name = event.target.value;
     } else {
-      console.log("cvc");
       document.getElementById("player2Name")!.innerHTML = "Player 2";
+      player2Name = "Player 2";
     }
   }
 
@@ -57,13 +61,24 @@ export class TicTacToeComponent {
     if (start == false) {
       start = true;
       this.addEventListenersToCells();
-      document.getElementById("status")!.innerHTML = switchOrder ? "Player 2's turn" : "Player 1's turn";
+      if (mode == "singlePlayer") {
+        document.getElementById("status")!.innerHTML = switchOrder ? player2Name + "'s turn" : player1Name + "'s turn";
+        if (switchOrder) {
+          const randomIndex = Math.floor(Math.random() * availableInputs.length);
+          const cellChosen = availableInputs[randomIndex];
+          setTimeout(() => {
+            document.getElementById(cellChosen.toString())!.innerHTML = "X";
+            availableInputs.splice(randomIndex, 1);
+            document.getElementById("status")!.innerHTML = player1Name + "'s turn";
+          }, 500)
+        }
+      } else {
+        document.getElementById("status")!.innerHTML = switchOrder ? player1Name + "'s turn" : player1Name + "'s turn";
+      }
       const startImg = document.getElementById("startImg") as HTMLImageElement;
       startImg.src = "assets/reset.svg";
     } else {
       this.reset();
-      const startImg = document.getElementById("startImg") as HTMLImageElement;
-      startImg.src = "assets/play.svg";
     }
   }
 
@@ -82,6 +97,7 @@ export class TicTacToeComponent {
       document.getElementById("player2Name")!.innerHTML = "PC";
       const btnImg = document.getElementById("playerModeImg") as HTMLImageElement;
       btnImg.src = "assets/single-player.svg";
+      player2Name = "PC";
     }
 
   }
@@ -101,7 +117,9 @@ export class TicTacToeComponent {
       player2Symbol = "X";
       document.getElementById("player1Symbol")!.innerHTML = "O";
       document.getElementById("player2Symbol")!.innerHTML = "X";
-      player = 2;
+      if (mode == "twoPlayer") {
+        player = 2;
+      }
     }
 
     console.log(switchOrder);
@@ -116,11 +134,11 @@ var player = 1;
 var switchOrder = false;
 var player1Symbol = "X";
 var player2Symbol = "O";
+var player1Name = "Player 1";
+var player2Name = "PC";
 var start = false;
 var mode = "singlePlayer";
 var availableInputs = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
-var player1Score = 0;
-var player2Score = 0;
 
 function removeEventListenersToCells() {
   const cells = document.getElementsByClassName("cell");
@@ -140,14 +158,12 @@ function cellClick(event: any) {
         if (checkMove()) {
           if (mode == "singlePlayer") {
             document.getElementById("status")!.innerHTML = "PC's turn";
-            console.log(cell.id);
-            pcMove(cell.id);
-            if (checkMove()) {
-              document.getElementById("status")!.innerHTML = "Player 1's turn";
-            }
+            setTimeout(() => {
+              pcMove(cell.id);
+            }, 500);
           } else {
             player = 2;
-            document.getElementById("status")!.innerHTML = "Player 2's turn";
+            document.getElementById("status")!.innerHTML = player2Name + "'s turn";
           }
         } else {
           removeEventListenersToCells();
@@ -160,7 +176,7 @@ function cellClick(event: any) {
         cell.innerHTML = player2Symbol;
         if (checkMove()) {
           player = 1;
-          document.getElementById("status")!.innerHTML = "Player 1's turn";
+          document.getElementById("status")!.innerHTML = player1Name + "'s turn";
         } else {
           removeEventListenersToCells();
         }
@@ -175,18 +191,17 @@ function cellClick(event: any) {
 }
 
 function pcMove(cellId: string) {
-  console.log("Cell by user: " + cellId);
   const index = availableInputs.indexOf(cellId);
-  console.log("Index of user cell: " + index);
   availableInputs.splice(index, 1);
-  console.log(availableInputs);
 
   const randomIndex = Math.floor(Math.random() * availableInputs.length);
   const cellChosen = availableInputs[randomIndex];
-  console.log("Cell chosen by PC: " + cellChosen);
-  document.getElementById(cellChosen.toString())!.innerHTML = "O";
+  document.getElementById(cellChosen.toString())!.innerHTML = player2Symbol;
   availableInputs.splice(randomIndex, 1);
-  console.log(availableInputs);
+
+  if (checkMove()) {
+    document.getElementById("status")!.innerHTML = player1Name + "'s turn";
+  }
 }
 
 function checkMove() {
@@ -196,73 +211,73 @@ function checkMove() {
     switch (i) {
       case 1:
         if (cells[0].innerHTML + cells[1].innerHTML + cells[2].innerHTML == "XXX") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 2 wins." : "Player 1 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player2Name + " wins." : player1Name + " wins.";
           return false;
         } else if (cells[0].innerHTML + cells[1].innerHTML + cells[2].innerHTML == "OOO") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 1 wins." : "Player 2 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player1Name + " wins." : player2Name + " wins.";
           return false;
         }
         break;
       case 2:
         if (cells[3].innerHTML + cells[4].innerHTML + cells[5].innerHTML == "XXX") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 2 wins." : "Player 1 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player2Name + " wins." : player1Name + " wins.";
           return false;
         } else if (cells[3].innerHTML + cells[4].innerHTML + cells[5].innerHTML == "OOO") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 1 wins." : "Player 2 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player1Name + " wins." : player2Name + " wins.";
           return false;
         }
         break;
       case 3:
         if (cells[6].innerHTML + cells[7].innerHTML + cells[8].innerHTML == "XXX") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 2 wins." : "Player 1 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player2Name + " wins." : player1Name + " wins.";
           return false;
         } else if (cells[6].innerHTML + cells[7].innerHTML + cells[8].innerHTML == "OOO") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 1 wins." : "Player 2 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player1Name + " wins." : player2Name + " wins.";
           return false;
         }
         break;
       case 4:
         if (cells[0].innerHTML + cells[3].innerHTML + cells[6].innerHTML == "XXX") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 2 wins." : "Player 1 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player2Name + " wins." : player1Name + " wins.";
           return false;
         } else if (cells[0].innerHTML + cells[3].innerHTML + cells[6].innerHTML == "OOO") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 1 wins." : "Player 2 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player1Name + " wins." : player2Name + " wins.";
           return false;
         }
         break;
       case 5:
         if (cells[1].innerHTML + cells[4].innerHTML + cells[7].innerHTML == "XXX") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 2 wins." : "Player 1 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player2Name + " wins." : player1Name + " wins.";
           return false;
         } else if (cells[1].innerHTML + cells[4].innerHTML + cells[7].innerHTML == "OOO") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 1 wins." : "Player 2 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player1Name + " wins." : player2Name + " wins.";
           return false;
         }
         break;
       case 6:
         if (cells[2].innerHTML + cells[5].innerHTML + cells[8].innerHTML == "XXX") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 2 wins." : "Player 1 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player2Name + " wins." : player1Name + " wins.";
           return false;
         } else if (cells[2].innerHTML + cells[5].innerHTML + cells[8].innerHTML == "OOO") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 1 wins." : "Player 2 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player1Name + " wins." : player2Name + " wins.";
           return false;
         }
         break;
       case 7:
         if (cells[0].innerHTML + cells[4].innerHTML + cells[8].innerHTML == "XXX") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 2 wins." : "Player 1 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player2Name + " wins." : player1Name + " wins.";
           return false;
         } else if (cells[0].innerHTML + cells[4].innerHTML + cells[8].innerHTML == "OOO") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 1 wins." : "Player 2 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player1Name + " wins." : player2Name + " wins.";
           return false;
         }
         break;
       case 8:
         if (cells[2].innerHTML + cells[4].innerHTML + cells[6].innerHTML == "XXX") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 2 wins." : "Player 1 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player2Name + " wins." : player1Name + " wins.";
           return false;
         } else if (cells[2].innerHTML + cells[4].innerHTML + cells[6].innerHTML == "OOO") {
-          document.getElementById("status")!.innerHTML = switchOrder ? "Player 1 wins." : "Player 2 wins.";
+          document.getElementById("status")!.innerHTML = switchOrder ? player1Name + " wins." : player2Name + " wins.";
           return false;
         }
         break;
